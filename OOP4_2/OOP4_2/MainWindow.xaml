@@ -1,0 +1,31 @@
+﻿<Window x:Class="OOP4_2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OOP4_2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel Orientation="Vertical" Margin="10">
+            <ListBox x:Name="materialsListBox" Margin="5" SelectionChanged="SelectionChanged">
+                <ListBoxItem Content="Stainless Steel" Tag="{x:Static local:Material.StainlessSteel}"/>
+                <ListBoxItem Content="Aluminum" Tag="{x:Static local:Material.Aluminium}"/>
+                <ListBoxItem Content="Reinforced Concrete" Tag="{x:Static local:Material.ReinforcedConcrete}"/>
+                <ListBoxItem Content="Composite" Tag="{x:Static local:Material.Composite}"/>
+                <ListBoxItem Content="Titanium" Tag="{x:Static local:Material.Titanium}"/>
+            </ListBox>
+            <ListBox x:Name="crosssectionsListBox" Margin="5" SelectionChanged="SelectionChanged">
+                <ListBoxItem Content="I-Beam" Tag="{x:Static local:CrossSection.IBeam}"/>
+                <ListBoxItem Content="Box" Tag="{x:Static local:CrossSection.Box}"/>
+                <ListBoxItem Content="Z-Shaped" Tag="{x:Static local:CrossSection.ZShaped}"/>
+                <ListBoxItem Content="C-Shaped" Tag="{x:Static local:CrossSection.CShaped}"/>
+            </ListBox>
+            <ListBox x:Name="testresultsListBox" Margin="5" SelectionChanged="SelectionChanged">
+                <ListBoxItem Content="Pass" Tag="{x:Static local:TestResult.Pass}"/>
+                <ListBoxItem Content="Fail" Tag="{x:Static local:TestResult.Fail}"/>
+            </ListBox>
+            <Label x:Name="testDetailsLabel" Margin="5"></Label>
+        </StackPanel>
+    </Grid>
+</Window>

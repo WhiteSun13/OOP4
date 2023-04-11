@@ -19,26 +19,29 @@ namespace OOP4_2
     /// </summary>
     public enum TestResult { Pass, Fail }
 
-
     public partial class MainWindow : Window
     {
-
         public MainWindow()
         {
             InitializeComponent();
         }
 
+        // Обработчик события изменения выбора в ListBox'ах
         private void SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            // Если не выбраны все три ListBox'а, то выходим из метода
             if (materialsListBox.SelectedItem == null || crosssectionsListBox.SelectedItem == null || testresultsListBox.SelectedItem == null)
                 return;
 
+            // Получаем выбранные значения из ListBox'ов
             Material selectedMaterial = (Material)((ListBoxItem)materialsListBox.SelectedItem).Tag;
             CrossSection selectedCrossSection = (CrossSection)((ListBoxItem)crosssectionsListBox.SelectedItem).Tag;
             TestResult selectedTestResult = (TestResult)((ListBoxItem)testresultsListBox.SelectedItem).Tag;
 
+            // Создаем объект StringBuilder для формирования строки с выбранными значениями
             StringBuilder selectionStringBuilder = new StringBuilder();
 
+            // Добавляем в строку выбранный материал
             switch (selectedMaterial)
             {
                 case Material.StainlessSteel:
@@ -58,6 +61,7 @@ namespace OOP4_2
                     break;
             }
 
+            // Добавляем в строку выбранное сечение
             switch (selectedCrossSection)
             {
                 case CrossSection.IBeam:
@@ -74,6 +78,7 @@ namespace OOP4_2
                     break;
             }
 
+            // Добавляем в строку результат тестирования
             switch (selectedTestResult)
             {
                 case TestResult.Pass:
@@ -84,6 +89,7 @@ namespace OOP4_2
                     break;
             }
 
+            // Выводим сформированную строку в Label
             testDetailsLabel.Content = selectionStringBuilder.ToString();
         }
     }

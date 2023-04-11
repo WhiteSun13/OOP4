@@ -122,20 +122,27 @@ namespace OOP4_3
             InitializeComponent();
         }
 
+        // Обработчик нажатия на кнопку "Run Tests"
         private void RunTests_Click(object sender, RoutedEventArgs e)
         {
+            // Создаем массив для хранения результатов тестов
             results = new TestCaseResult[10];
 
+            // Генерируем результаты тестов и сохраняем их в массив
             for (int i = 0; i < 10; i++)
             {
                 results[i] = TestManager.GenerateResult();
             }
 
+            // Счётчики успешных и неуспешных тестов
             int passCount = 0;
             int failCount = 0;
 
+            // Очищаем список причин неуспешных тестов
             reasonsList.Items.Clear();
 
+            // Проходим по всем результатам тестов и увеличиваем соответствующие счетчики
+            // Если тест не прошел, добавляем причину неуспешности в список
             foreach (var result in results)
             {
                 if (result.Result == TestResult.Pass)
@@ -149,6 +156,7 @@ namespace OOP4_3
                 }
             }
 
+            // Обновляем текстовые поля с количеством успешных и неуспешных тестов
             successesCount.Text = $"Successes: {passCount}";
             failuresCount.Text = $"Failures: {failCount}";
         }
